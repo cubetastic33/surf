@@ -141,6 +141,13 @@ static SiteSpecific certs[] = {
 
 #define MODKEY GDK_CONTROL_MASK
 
+/* Quick searching. */
+#define QSEARCH { \
+    .v = (char *[]){"/bin/sh", "-c", "surf_qsearch $0 $1", winid, NULL } \
+}
+
+#define HOMEPAGE "https://start.duckduckgo.com"
+
 /* hotkeys */
 /*
  * If you use anything else but MODKEY and GDK_SHIFT_MASK, don't forget to
@@ -199,6 +206,7 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      toggle,     { .i = ScrollBars } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_t,      toggle,     { .i = StrictTLS } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      toggle,     { .i = Style } },
+        { MODKEY,                GDK_KEY_q,      spawn,      QSEARCH },
 };
 
 /* button definitions */
@@ -212,5 +220,3 @@ static Button buttons[] = {
 	{ OnAny,        0,              9,      clicknavigate,  { .i = +1 },    1 },
 	{ OnMedia,      MODKEY,         1,      clickexternplayer, { 0 },       1 },
 };
-
-#define HOMEPAGE "https://start.duckduckgo.com"
