@@ -143,10 +143,10 @@ static SiteSpecific certs[] = {
 
 /* Quick searching. */
 #define QSEARCH { \
-    .v = (char *[]){"/bin/sh", "-c", "surf_qsearch $0 $1", winid, NULL } \
+    .v = (char *[]){"/bin/sh", "-c", "/home/aravk/scripts/surf_qsearch $0 $1", winid, NULL } \
 }
 
-#define HOMEPAGE "https://start.duckduckgo.com"
+#define HOMEPAGE "file:///home/aravk/Documents/newtab/index.html"
 
 /* hotkeys */
 /*
@@ -155,7 +155,7 @@ static SiteSpecific certs[] = {
  */
 static Key keys[] = {
 	/* modifier              keyval              function    arg */
-	{ MODKEY,                GDK_KEY_g,          spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
+	{ 0,                     GDK_KEY_F6,         spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
 	{ MODKEY,                GDK_KEY_f,          spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_slash,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_m,          spawn,      BM_ADD("_SURF_URI") },
@@ -208,6 +208,7 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_t,          toggle,     { .i = StrictTLS } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,          toggle,     { .i = Style } },
         { MODKEY,                GDK_KEY_s,          spawn,      QSEARCH },
+        { MODKEY,                GDK_KEY_g,          spawn,      QSEARCH },
 };
 
 /* button definitions */
